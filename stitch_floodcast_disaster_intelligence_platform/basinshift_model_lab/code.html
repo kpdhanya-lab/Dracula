@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary":"#00687a","on-secondary-fixed-variant":"#004e5c","outline-variant":"#bfc7d2","on-secondary":"#ffffff","surface-variant":"#d3e4fe","background":"#f8f9ff","tertiary-fixed-dim":"#d0bcff","inverse-primary":"#93ccff","tertiary":"#6b38d4","surface-tint":"#006398","on-tertiary":"#ffffff","on-error-container":"#93000a","on-surface":"#0b1c30","surface-container-high":"#dce9ff","on-secondary-container":"#006172","surface":"#f8f9ff","on-secondary-fixed":"#001f26","surface-dim":"#cbdbf5","error-container":"#ffdad6","on-primary-fixed":"#001d31","primary":"#006194","on-error":"#ffffff","surface-container-highest":"#d3e4fe","error":"#ba1a1a","secondary-fixed":"#acedff","surface-bright":"#f8f9ff","inverse-on-surface":"#eaf1ff","primary-fixed":"#cce5ff","on-surface-variant":"#3f4850","primary-fixed-dim":"#93ccff","secondary-fixed-dim":"#4cd7f6","on-tertiary-fixed":"#23005c","surface-container-low":"#eff4ff","tertiary-fixed":"#e9ddff","surface-container":"#e5eeff","on-primary":"#ffffff","secondary-container":"#57dffe","on-background":"#0b1c30","primary-container":"#007bb9","on-tertiary-container":"#fffbff","tertiary-container":"#8455ef","outline":"#707881","inverse-surface":"#213145","on-primary-fixed-variant":"#004b73","surface-container-lowest":"#ffffff","on-primary-container":"#fdfcff","on-tertiary-fixed-variant":"#5516be"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"margin":"1.5rem","space-lg":"1.5rem","gutter":"1.5rem","space-md":"1rem","space-xl":"2.5rem","space-sm":"0.5rem","space-xs":"0.25rem"},"fontFamily":{"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"display-hero-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"display-hero":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},"fontSize":{"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.03em","fontWeight":"700"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-hero-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"800"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"700"}],"display-hero":["52px",{"lineHeight":"60px","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}]}}}}</script>  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../shared/supabaseClient.js"></script>
+</head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[22px]">waves</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">BasinShift</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">ML Hydro</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">Real-Time Flood Intelligence</span></div></div><div class="hidden xl:flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span>LSTM-v4.2-Huber (Production)</span></div><div class="hidden lg:flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><span class="material-symbols-outlined text-[16px] text-primary">water_drop</span><span>BASIN_001 • Salt River Reach 4 (CAMELS #05503800)</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">unfold_more</span></div></div><nav class="hidden md:flex items-center gap-space-xs bg-surface-container-low p-1.5 rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.02)]" data-active-classes="bg-primary-container text-on-primary-container font-label-lg rounded-full"><a class="px-4 py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors" data-path="command-center" href="../basinshift_command_center/code.html">Command Center</a><a class="px-4 py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors" data-path="flood-prediction" href="../basinshift_flood_prediction/code.html">Flood Prediction</a><a aria-current="page" class="px-4 py-2 transition-colors bg-primary-container text-on-primary-container font-label-lg rounded-full" data-path="model-lab" href="../basinshift_model_lab/code.html">Model Lab</a><a class="px-4 py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors" data-path="ai-assistant" href="../basinshift_ai_assistant/code.html">AI Assistant</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden 2xl:flex items-center gap-space-xs px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px] text-secondary">cloud_done</span><span>Sample Telemetry Synced (sample_predictions.json)</span></div><button class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">search</span><span>Catchment / Metric</span><kbd class="px-1.5 py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-on-surface">⌘K</kbd></button><button class="flex items-center gap-space-xs px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all shadow-[0_2px_8px_rgba(0,97,148,0.2)]" type="button"><span class="material-symbols-outlined text-[18px]">smart_toy</span><span>Ask Copilot</span><span class="px-1.5 py-0.2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[10px]">Groq Llama-3.3</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<div class="w-full px-margin py-space-xl flex flex-col gap-space-xl max-w-[1720px] mx-auto">
+<!-- Top Scientific Header & Checkpoint Info -->
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none"></div>
+<div class="absolute right-1/4 -bottom-24 w-80 h-80 rounded-full bg-primary-fixed/40 blur-2xl pointer-events-none"></div>
+<div class="relative flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-4xl">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-3 py-1 rounded-full bg-primary text-on-primary font-bold tracking-wider uppercase">Academic Validation Hub</span>
+<span class="font-label-sm text-label-sm px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+              Colab Run Verified
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">CAMELS ID: #05503800 • Salt River Reach 4</span>
+</div>
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight leading-none mt-space-xs">
+            Hydrological Neural Lab &amp; Validation Dossier
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+            Empirical benchmarking suite for production deep learning streamflow models. Direct validation artifact synchronization between PyTorch CUDA training pipelines and real-time civic flood early warnings.
+          </p>
+</div>
+<!-- Quick Checkpoint Spec Card -->
+<div class="shrink-0 flex flex-col gap-space-sm bg-surface-container-lowest/90 backdrop-blur-xl p-space-lg rounded-DEFAULT shadow-[0_4px_20px_rgba(0,104,122,0.06)] min-w-[320px]">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Checkpoint</span>
+<span class="flex items-center gap-1.5 font-label-sm text-label-sm text-secondary font-bold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+              Live in Inference
+            </span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-extrabold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">memory</span>
+            LSTM-v4.2-Huber
+          </div>
+<div class="flex flex-col gap-1 text-on-surface-variant font-body-sm text-body-sm pt-2">
+<div class="flex justify-between">
+<span>Target Vector:</span>
+<span class="font-semibold text-on-surface">River Discharge Q (m³/s)</span>
+</div>
+<div class="flex justify-between">
+<span>Sequence Window:</span>
+<span class="font-semibold text-on-surface">128h Antecedent Moisture</span>
+</div>
+<div class="flex justify-between">
+<span>Loss Optimization:</span>
+<span class="font-semibold text-on-surface">Smooth Huber (δ = 1.0)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons Bar -->
+<div class="relative flex flex-wrap items-center justify-between gap-space-md pt-space-md bg-surface-container-lowest/60 backdrop-blur-md px-space-md py-space-sm rounded-full">
+<div class="flex flex-wrap items-center gap-space-sm">
+<a class="inline-flex items-center gap-space-xs px-5 py-2.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-transform" href="#checkpoint-weights">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Download Weights (lstm_v4_2.pt • 4.8MB)</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-5 py-2.5 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" href="#colab-script">
+<span class="material-symbols-outlined text-[18px] text-secondary">terminal</span>
+<span>View Colab Evaluation Script</span>
+</a>
+<button class="inline-flex items-center gap-space-xs px-5 py-2.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">picture_as_pdf</span>
+<span>Export Model Card (PDF)</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">commit</span>
+<span>Commit: <code class="font-mono text-on-surface">f7a932d</code></span>
+<span>•</span>
+<span>Epoch: 180/200</span>
+<span>•</span>
+<span>CUDA: 12.2 Float32</span>
+</div>
+</div>
+</div>
+<!-- 4 High-Authority KPI Benchmark Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-lg">
+<!-- KPI 1: RMSE -->
+<div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Generalization Precision</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Test RMSE</span>
+</div>
+<span class="p-2 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-hero text-display-hero font-extrabold text-primary tracking-tight" id="lab-rmse-val">2.49</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">m³/s</span>
+</div>
+<div class="flex flex-col gap-1.5 pt-2">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold">Top 2% Benchmark</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">CAMELS-US</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Tested across 42 unseen catchments outside training geography.</span>
+</div>
+</div>
+<!-- KPI 2: MAE -->
+<div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Discharge Mean Error</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Test MAE</span>
+</div>
+<span class="p-2 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-hero text-display-hero font-extrabold text-secondary tracking-tight" id="lab-mae-val">0.76</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">m³/s</span>
+</div>
+<div class="flex flex-col gap-1.5 pt-2">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold">Sub-Meter Discharge</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Eliminates false flood alarm chatter on mild precipitation surges.</span>
+</div>
+</div>
+<!-- KPI 3: NSE -->
+<div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Nash-Sutcliffe Efficiency</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">NSE Metric</span>
+</div>
+<span class="p-2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">water</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-hero text-display-hero font-extrabold text-tertiary tracking-tight">0.941</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">coeff</span>
+</div>
+<div class="flex flex-col gap-1.5 pt-2">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold">&gt;0.80 Superior Tier</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Hydrological community golden standard for peak hydrograph alignment.</span>
+</div>
+</div>
+<!-- KPI 4: Huber Delta -->
+<div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Loss Boundary δ</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Huber Delta</span>
+</div>
+<span class="p-2 rounded-full bg-surface-container text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-hero text-display-hero font-extrabold text-on-surface tracking-tight">1.00</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">δ threshold</span>
+</div>
+<div class="flex flex-col gap-1.5 pt-2">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-bold">Smooth L1/L2</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Robust against sensor sediment clogs &amp; USGS gauge signal dropouts.</span>
+</div>
+</div>
+</div>
+<!-- Hydrograph & Residual Error Visualizer Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Main Chart Card (8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-space-xl rounded-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface font-extrabold">Evaluation Hydrograph</span>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-semibold">Test Basin #05503800</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Continuous 72-Hour Verification Run: USGS Observed vs LSTM Predicted + Residual Error Δ</span>
+</div>
+<!-- View Switcher -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-full shrink-0">
+<button class="px-3.5 py-1.5 rounded-full font-label-sm text-label-sm bg-primary text-on-primary font-bold shadow-sm transition-all" id="btn-fit" onclick="switchChartView('fit')" type="button">
+              Actual vs Predicted
+            </button>
+<button class="px-3.5 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all" id="btn-residual" onclick="switchChartView('residual')" type="button">
+              Residual Error (Δ)
+            </button>
+</div>
+</div>
+<!-- Legend Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm p-space-sm bg-surface-container-low rounded-DEFAULT">
+<div class="flex flex-wrap items-center gap-space-md font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="w-3.5 h-1 rounded-full bg-primary"></span>
+<span class="text-on-surface font-semibold">USGS Ground Truth (Q_obs)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3.5 h-1 rounded-full bg-secondary stroke-dasharray"></span>
+<span class="text-on-surface font-semibold">Bi-LSTM Median (Q_pred)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3.5 h-3.5 rounded bg-primary-fixed-dim/60"></span>
+<span class="text-on-surface-variant">90% MC Dropout Interval</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3.5 h-1 rounded-full bg-error"></span>
+<span class="text-error font-semibold">Critical Flood Crest (25.0 m³/s)</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">RMSE: 1.18 m³/s (Local Catchment)</span>
+</div>
+<!-- Inline SVG Hydrograph Visualization -->
+<div class="w-full relative bg-surface-container-low/40 rounded-DEFAULT p-space-md overflow-hidden">
+<div class="w-full block" id="chart-fit-container">
+<svg class="w-full h-auto overflow-visible" preserveaspectratio="none" viewbox="0 0 800 320">
+<defs>
+<lineargradient id="mcBand" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#93ccff" stop-opacity="0.6"></stop>
+<stop offset="100%" stop-color="#cce5ff" stop-opacity="0.1"></stop>
+</lineargradient>
+<lineargradient id="surgeHighlight" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#006194" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#006194" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Horizontal Lines -->
+<line stroke="#bfc7d2" stroke-dasharray="3 3" stroke-width="0.5" x1="40" x2="780" y1="40" y2="40"></line>
+<line stroke="#bfc7d2" stroke-dasharray="3 3" stroke-width="0.5" x1="40" x2="780" y1="100" y2="100"></line>
+<line stroke="#bfc7d2" stroke-dasharray="3 3" stroke-width="0.5" x1="40" x2="780" y1="160" y2="160"></line>
+<line stroke="#bfc7d2" stroke-dasharray="3 3" stroke-width="0.5" x1="40" x2="780" y1="220" y2="220"></line>
+<line stroke="#bfc7d2" stroke-width="1" x1="40" x2="780" y1="280" y2="280"></line>
+<!-- Y-Axis Labels -->
+<text class="fill-outline text-[11px] font-mono" text-anchor="end" x="32" y="44">35 m³/s</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="end" x="32" y="104">25 m³/s</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="end" x="32" y="164">15 m³/s</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="end" x="32" y="224">5 m³/s</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="end" x="32" y="284">0 m³/s</text>
+<!-- Flood Action Threshold Line (25 m³/s -> y=100) -->
+<line stroke="#ba1a1a" stroke-dasharray="6 4" stroke-width="1.5" x1="40" x2="780" y1="100" y2="100"></line>
+<text class="fill-error text-[10px] font-bold" text-anchor="end" x="770" y="92">Flood Stage (25 m³/s)</text>
+<!-- 90% MC Dropout Confidence Polygon Band -->
+<!-- Starts base, surges at peak, falls back -->
+<polygon fill="url(#mcBand)" points="
+                60,260 120,250 180,240 240,210 300,160 360,80 420,70 480,95 540,165 600,215 660,245 720,255 760,258
+                760,270 720,268 660,262 600,240 540,195 480,125 420,105 360,115 300,190 240,235 180,258 120,266 60,272
+              "></polygon>
+<!-- USGS Ground Truth Line (Deep Primary Blue) -->
+<polyline fill="none" points="
+                60,266 120,258 180,248 240,222 300,175 360,94 420,84 480,108 540,180 600,228 660,252 720,262 760,264
+              " stroke="#006194" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<!-- Model Predicted Line (Secondary Cyan / Teal) -->
+<polyline fill="none" points="
+                60,265 120,256 180,245 240,218 300,172 360,98 420,88 480,112 540,178 600,225 660,250 720,260 760,263
+              " stroke="#00687a" stroke-dasharray="5 3" stroke-linecap="round" stroke-width="2"></polyline>
+<!-- Peak Marker Dot and Callout -->
+<circle cx="360" cy="94" fill="#006194" r="5"></circle>
+<circle class="animate-pulse" cx="360" cy="94" fill="none" r="8" stroke="#006194" stroke-width="1.5"></circle>
+<text class="fill-primary font-bold text-[11px]" text-anchor="middle" x="360" y="70">Observed Crest: 26.2 m³/s</text>
+<circle cx="360" cy="98" fill="#00687a" r="4"></circle>
+<text class="fill-secondary font-bold text-[10px]" text-anchor="middle" x="360" y="132">Predicted: 25.4 m³/s (Δ -0.8)</text>
+<!-- X-Axis Timestamps -->
+<text class="fill-outline text-[11px] font-mono" text-anchor="middle" x="60" y="302">T-72h</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="middle" x="180" y="302">T-48h</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="middle" x="300" y="302">T-24h</text>
+<text class="fill-primary font-bold text-[11px] font-mono" text-anchor="middle" x="420" y="302">T_crest (Peak)</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="middle" x="540" y="302">T+12h</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="middle" x="660" y="302">T+24h</text>
+<text class="fill-outline text-[11px] font-mono" text-anchor="middle" x="760" y="302">T+36h</text>
+</svg>
+</div>
+<!-- Alternative View: Residual Error Delta Chart (Toggled via JS) -->
+<div class="w-full hidden" id="chart-residual-container">
+<svg class="w-full h-auto overflow-visible" preserveaspectratio="none" viewbox="0 0 800 320">
+<!-- Center Zero Residual Line -->
+<line stroke="#0b1c30" stroke-width="1.5" x1="40" x2="780" y1="160" y2="160"></line>
+<text class="fill-on-surface text-[11px] font-mono font-bold" text-anchor="end" x="32" y="164">0.0 m³/s</text>
+<line stroke="#bfc7d2" stroke-dasharray="3 3" stroke-width="0.5" x1="40" x2="780" y1="80" y2="80"></line>
+<text class="fill-outline text-[11px] font-mono" text-anchor="end" x="32" y="84">+2.5 m³/s</text>
+<line stroke="#bfc7d2" stroke-dasharray="3 3" stroke-width="0.5" x1="40" x2="780" y1="240" y2="240"></line>
+<text class="fill-outline text-[11px] font-mono" text-anchor="end" x="32" y="244">-2.5 m³/s</text>
+<!-- Safe Residual Envelope Band (+/- 1.0 Huber Delta) -->
+<rect fill="#57dffe" fill-opacity="0.15" height="64" width="740" x="40" y="128"></rect>
+<text class="fill-secondary text-[10px] font-bold" text-anchor="end" x="770" y="124">Huber Linear Region Boundary (δ = 1.0)</text>
+<!-- Residual Bars / Deviation Points -->
+<path d="
+                M 60,160 L 60,163 M 120,160 L 120,158 M 180,160 L 180,157 M 240,160 L 240,154 
+                M 300,160 L 300,155 M 360,160 L 360,178 M 420,160 L 420,172 M 480,160 L 480,168 
+                M 540,160 L 540,163 M 600,160 L 600,156 M 660,160 L 660,158 M 720,160 L 720,161
+              " stroke="#ba1a1a" stroke-linecap="round" stroke-width="3"></path>
+<!-- Residual Scatter Points -->
+<circle cx="60" cy="163" fill="#006194" r="3.5"></circle>
+<circle cx="120" cy="158" fill="#006194" r="3.5"></circle>
+<circle cx="180" cy="157" fill="#006194" r="3.5"></circle>
+<circle cx="240" cy="154" fill="#006194" r="3.5"></circle>
+<circle cx="300" cy="155" fill="#006194" r="3.5"></circle>
+<circle cx="360" cy="178" fill="#ba1a1a" r="5"></circle>
+<text class="fill-error font-bold text-[10px]" text-anchor="middle" x="360" y="196">Max Underestimate (-0.8 m³/s)</text>
+<circle cx="420" cy="172" fill="#ba1a1a" r="4"></circle>
+<circle cx="480" cy="168" fill="#006194" r="3.5"></circle>
+<circle cx="540" cy="163" fill="#006194" r="3.5"></circle>
+<circle cx="600" cy="156" fill="#006194" r="3.5"></circle>
+<circle cx="660" cy="158" fill="#006194" r="3.5"></circle>
+<circle cx="720" cy="161" fill="#006194" r="3.5"></circle>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-space-xs">
+<span>Simulation Mode: Continuous 15-minute USGS telemetry stream.</span>
+<span class="font-mono text-on-surface">Peak Discrepancy: -3.05% relative error</span>
+</div>
+</div>
+<!-- Right Column: Verification Metadata & Model Card Highlights (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Live Benchmark Verification Badge -->
+<div class="bg-surface-container-high/60 backdrop-blur-md p-space-lg rounded-lg flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">science</span>
+<span>Academic Rigor Scorecard</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-extrabold">Peer-Review Methodology</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            The Bi-LSTM model addresses hydrologic non-stationarity by penalizing peak underestimation. The evaluation follows Kratzert et al. (2019) benchmark standards across the 531 CAMELS basins.
+          </p>
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Training Epochs</span>
+<span class="font-label-sm text-label-sm font-mono text-on-surface font-bold">200 (Early Stop @182)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Optimizer</span>
+<span class="font-label-sm text-label-sm font-mono text-on-surface font-bold">AdamW (lr=1e-3, wd=1e-4)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lookback Sequence</span>
+<span class="font-label-sm text-label-sm font-mono text-on-surface font-bold">128 Timesteps (1 hr res)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<span class="font-body-sm text-body-sm text-on-surface-variant">K-Fold Cross-Validation</span>
+<span class="font-label-sm text-label-sm font-mono text-on-surface font-bold">5-Fold Spatial Spurious</span>
+</div>
+</div>
+</div>
+<!-- Google Colab Execution Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-lg shadow-sm flex flex-col gap-space-sm" id="colab-script">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Direct Reproducibility</span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Colab Evaluation Sandbox</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Run the raw Jupyter notebook against Google Cloud Colab instances with preloaded CAMELS pickle tensors.
+          </p>
+<div class="bg-surface-container-highest p-3 rounded font-mono text-[12px] text-on-surface leading-tight overflow-x-auto">
+<div class="text-outline"># Clone &amp; Evaluate Production Weights</div>
+<div class="text-primary mt-1 font-bold">!git clone github.com/basinshift/eval-suite</div>
+<div class="text-on-surface">from basinshift.models import BiLSTMHydro</div>
+<div class="text-secondary">model = BiLSTMHydro.load_checkpoint('lstm_v4_2.pt')</div>
+<div class="text-tertiary">metrics = model.evaluate(camels_id='05503800')</div>
+</div>
+<div class="flex items-center gap-space-sm pt-2">
+<button class="w-full py-2.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 hover:scale-[1.01] transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+              Open in Google Colab
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Checkpoint Metadata Footnote Bar -->
+<div class="bg-surface-container-lowest p-space-lg rounded-lg shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md" id="checkpoint-weights">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Cryptographic Weights Checksum: SHA256 Verified</span>
+<span class="font-mono text-on-surface-variant text-[12px]">e4b29c017d834ffba89012fce4589d31846b0a1928374d9e018274acbf831201</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" type="button">
+          Copy Hash
+        </button>
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm shadow-sm hover:scale-[1.02] transition-transform" type="button">
+          Verify via Zenodo DOI
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  
+  // Live Supabase Model Experiments Loader
+  async function loadModelMetricsFromSupabase() {
+    try {
+      if (!window.BasinShiftDB) return;
+      const metrics = await window.BasinShiftDB.getModelMetrics();
+      if (metrics) {
+        console.log("⚡ Bound live model metrics from Supabase:", metrics);
+        const rmseEl = document.getElementById('lab-rmse-val');
+        const maeEl = document.getElementById('lab-mae-val');
+        if (rmseEl && metrics.test_rmse) rmseEl.textContent = metrics.test_rmse.toFixed(2);
+        if (maeEl && metrics.test_mae) maeEl.textContent = metrics.test_mae.toFixed(2);
+      }
+    } catch (e) {
+      console.warn("Could not load model metrics from Supabase:", e);
+    }
+  }
+  setTimeout(loadModelMetricsFromSupabase, 400);
+
+  function switchChartView(viewMode) {
+    const fitContainer = document.getElementById('chart-fit-container');
+    const resContainer = document.getElementById('chart-residual-container');
+    const btnFit = document.getElementById('btn-fit');
+    const btnResidual = document.getElementById('btn-residual');
+
+    if (viewMode === 'fit') {
+      fitContainer.classList.remove('hidden');
+      fitContainer.classList.add('block');
+      resContainer.classList.remove('block');
+      resContainer.classList.add('hidden');
+
+      btnFit.className = 'px-3.5 py-1.5 rounded-full font-label-sm text-label-sm bg-primary text-on-primary font-bold shadow-sm transition-all';
+      btnResidual.className = 'px-3.5 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all';
+    } else {
+      fitContainer.classList.remove('block');
+      fitContainer.classList.add('hidden');
+      resContainer.classList.remove('hidden');
+      resContainer.classList.add('block');
+
+      btnResidual.className = 'px-3.5 py-1.5 rounded-full font-label-sm text-label-sm bg-secondary text-on-secondary font-bold shadow-sm transition-all';
+      btnFit.className = 'px-3.5 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all';
+    }
+  }
+</script></main><footer class="w-full bg-surface-container-low py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-sm"><div class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[14px]">water_lux</span></div><span class="font-label-md text-label-md text-on-surface">BasinShift Hydro Intelligence</span><span>•</span><span>PyTorch LSTM</span><span>•</span><span>Huber Loss (δ=1.0)</span><span>•</span><span>Groq Llama-3.3-70B</span><span>•</span><span>CAMELS Hydrological Dataset</span></div><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-secondary">All Hydrological Models Nominal</span><span>© 2025 BasinShift Platform. Open Science &amp; Civic Hydrology.</span></div></div></footer></body></html>

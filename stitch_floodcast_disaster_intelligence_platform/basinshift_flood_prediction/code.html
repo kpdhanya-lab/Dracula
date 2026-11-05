@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary":"#00687a","on-secondary-fixed-variant":"#004e5c","outline-variant":"#bfc7d2","on-secondary":"#ffffff","surface-variant":"#d3e4fe","background":"#f8f9ff","tertiary-fixed-dim":"#d0bcff","inverse-primary":"#93ccff","tertiary":"#6b38d4","surface-tint":"#006398","on-tertiary":"#ffffff","on-error-container":"#93000a","on-surface":"#0b1c30","surface-container-high":"#dce9ff","on-secondary-container":"#006172","surface":"#f8f9ff","on-secondary-fixed":"#001f26","surface-dim":"#cbdbf5","error-container":"#ffdad6","on-primary-fixed":"#001d31","primary":"#006194","on-error":"#ffffff","surface-container-highest":"#d3e4fe","error":"#ba1a1a","secondary-fixed":"#acedff","surface-bright":"#f8f9ff","inverse-on-surface":"#eaf1ff","primary-fixed":"#cce5ff","on-surface-variant":"#3f4850","primary-fixed-dim":"#93ccff","secondary-fixed-dim":"#4cd7f6","on-tertiary-fixed":"#23005c","surface-container-low":"#eff4ff","tertiary-fixed":"#e9ddff","surface-container":"#e5eeff","on-primary":"#ffffff","secondary-container":"#57dffe","on-background":"#0b1c30","primary-container":"#007bb9","on-tertiary-container":"#fffbff","tertiary-container":"#8455ef","outline":"#707881","inverse-surface":"#213145","on-primary-fixed-variant":"#004b73","surface-container-lowest":"#ffffff","on-primary-container":"#fdfcff","on-tertiary-fixed-variant":"#5516be"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"margin":"1.5rem","space-lg":"1.5rem","gutter":"1.5rem","space-md":"1rem","space-xl":"2.5rem","space-sm":"0.5rem","space-xs":"0.25rem"},"fontFamily":{"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"display-hero-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"display-hero":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},"fontSize":{"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.03em","fontWeight":"700"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-hero-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"800"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"700"}],"display-hero":["52px",{"lineHeight":"60px","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}]}}}}</script>  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../shared/supabaseClient.js"></script>
+</head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[22px]">waves</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">BasinShift</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">ML Hydro</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">Real-Time Flood Intelligence</span></div></div><div class="hidden xl:flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span>LSTM-v4.2-Huber (Production)</span></div><div class="hidden lg:flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><span class="material-symbols-outlined text-[16px] text-primary">water_drop</span><span>BASIN_001 • Salt River Reach 4 (CAMELS #05503800)</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">unfold_more</span></div></div><nav class="hidden md:flex items-center gap-space-xs bg-surface-container-low p-1.5 rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.02)]" data-active-classes="bg-primary-container text-on-primary-container font-label-lg rounded-full"><a class="px-4 py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors" data-path="command-center" href="../basinshift_command_center/code.html">Command Center</a><a aria-current="page" class="px-4 py-2 transition-colors bg-primary-container text-on-primary-container font-label-lg rounded-full" data-path="flood-prediction" href="../basinshift_flood_prediction/code.html">Flood Prediction</a><a class="px-4 py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors" data-path="model-lab" href="../basinshift_model_lab/code.html">Model Lab</a><a class="px-4 py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors" data-path="ai-assistant" href="../basinshift_ai_assistant/code.html">AI Assistant</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden 2xl:flex items-center gap-space-xs px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px] text-secondary">cloud_done</span><span>Sample Telemetry Synced (sample_predictions.json)</span></div><button class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">search</span><span>Catchment / Metric</span><kbd class="px-1.5 py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-on-surface">⌘K</kbd></button><button class="flex items-center gap-space-xs px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all shadow-[0_2px_8px_rgba(0,97,148,0.2)]" type="button"><span class="material-symbols-outlined text-[18px]">smart_toy</span><span>Ask Copilot</span><span class="px-1.5 py-0.2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[10px]">Groq Llama-3.3</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<div class="w-full px-margin py-space-md flex flex-col gap-space-lg max-w-[1720px] mx-auto">
+<!-- Top Catchment Identity & Model Telemetry Header -->
+<div class="w-full bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm tracking-wide uppercase">CAMELS #05503800</span>
+<span class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">memory</span>
+            torch_lstm_v4_weights.pth
+          </span>
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm flex items-center gap-1 font-bold">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+            Breach Stage Projected (T+168h)
+          </span>
+</div>
+<div class="flex flex-col md:flex-row md:items-baseline gap-x-space-md gap-y-1 mt-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">BASIN_001 • Salt River Reach 4</h1>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">Inference Generated: 2026-01-15T00:00:00Z</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">
+          Multi-horizon recurrent sequence inference trained on 34 years of daily USGS streamflow metrics using Huber loss (δ=1.0). Hydrograph shows projected discharge breach vs spillway discharge capacity.
+        </p>
+</div>
+<!-- Quick Metrics Strip -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-md bg-surface-container-low p-space-md rounded-DEFAULT shrink-0">
+<div class="flex flex-col pr-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Critical Capacity</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-error">15.0</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">m³/s</span>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant mt-0.5">Spillway Safe Limit</span>
+</div>
+<div class="w-px h-10 bg-surface-variant hidden sm:block"></div>
+<div class="flex flex-col pl-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Peak Forecast (Day 7)</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-primary">18.7</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">m³/s</span>
+</div>
+<span class="font-label-sm text-label-sm text-error font-semibold mt-0.5">+3.7 m³/s Exceedance</span>
+</div>
+</div>
+</div>
+<!-- Active Control Toolbar -->
+<div class="w-full flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-low p-space-sm rounded-full px-space-md">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-2 ml-1">EVALUATION WINDOW:</span>
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-variant transition-all shadow-sm" id="btn-horizon-1" onclick="setHorizon(1)">
+          1 Day <span class="font-normal opacity-80">(12.4 m³/s)</span>
+</button>
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-variant transition-all shadow-sm" id="btn-horizon-3" onclick="setHorizon(3)">
+          3 Days <span class="font-normal opacity-80">(14.1 m³/s)</span>
+</button>
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-[0_2px_8px_rgba(0,97,148,0.25)]" id="btn-horizon-7" onclick="setHorizon(7)">
+          7 Days <span class="font-normal text-primary-fixed">(18.7 m³/s • PEAK)</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Uncertainty Toggle -->
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" id="toggle-uncertainty" onchange="toggleUncertaintyBand()" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">90% Confidence Interval [8.1 – 31.2 m³/s]</span>
+</label>
+<!-- Observed Gauge Toggle -->
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" id="toggle-observed" onchange="toggleObservedTrace()" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">USGS Observed Trace</span>
+</label>
+</div>
+</div>
+<!-- Hero Interactive Hydrograph Canvas -->
+<div class="w-full bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Plot Legend & Hover Header -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-md font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-1 rounded-full bg-primary"></span>
+<span class="text-on-surface">Observed Streamflow (Telemetry)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-1 rounded-full bg-tertiary"></span>
+<span class="text-on-surface">LSTM Hydrological Forecast</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-0.5 border-t border-dashed border-error"></span>
+<span class="text-error font-semibold">Spillway Capacity (15.0 m³/s)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3 rounded bg-secondary-fixed/50"></span>
+<span class="text-on-surface-variant">90% P10–P90 Ensemble Spread</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-mono font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] text-primary">analytics</span>
+<span>hovermode="x unified"</span>
+</div>
+</div>
+<!-- Hydrograph SVG Workspace -->
+<div class="w-full relative bg-surface-container-lowest rounded-DEFAULT overflow-hidden p-2 select-none" id="hydrograph-wrapper">
+<svg class="w-full h-auto max-h-[480px] overflow-visible" id="hydrograph-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 1100 420">
+<defs>
+<!-- Uncertainty 90% Gradient -->
+<lineargradient id="uncertaintyGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#57dffe" stop-opacity="0.45"></stop>
+<stop offset="50%" stop-color="#acedff" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#d0bcff" stop-opacity="0.10"></stop>
+</lineargradient>
+<!-- LSTM forecast gradient under-fill -->
+<lineargradient id="lstmFillGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#6b38d4" stop-opacity="0.20"></stop>
+<stop offset="100%" stop-color="#6b38d4" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Background Grid Lines (Horizontal: 0, 5, 10, 15, 20, 25, 30 m3/s) -->
+<!-- Y-range: 0 m3/s = y:380, 35 m3/s = y:30 -> scale: ~10px per m3/s -->
+<g class="text-surface-variant" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1">
+<line stroke="#bfc7d2" stroke-dasharray="0" x1="80" x2="1060" y1="380" y2="380"></line>
+<line x1="80" x2="1060" y1="330" y2="330"></line>
+<line x1="80" x2="1060" y1="280" y2="280"></line>
+<line x1="80" x2="1060" y1="230" y2="230"></line>
+<line x1="80" x2="1060" y1="180" y2="180"></line>
+<line x1="80" x2="1060" y1="130" y2="130"></line>
+<line x1="80" x2="1060" y1="80" y2="80"></line>
+<line x1="80" x2="1060" y1="30" y2="30"></line>
+</g>
+<!-- Y-Axis Labels -->
+<g class="text-on-surface-variant font-mono text-[11px]" fill="currentColor" text-anchor="end">
+<text x="70" y="384">0.0</text>
+<text x="70" y="334">5.0</text>
+<text x="70" y="284">10.0</text>
+<text class="font-bold fill-error" x="70" y="234">15.0</text>
+<text x="70" y="184">20.0</text>
+<text x="70" y="134">25.0</text>
+<text x="70" y="84">30.0</text>
+<text x="70" y="34">35.0</text>
+<text class="font-sans font-semibold text-[12px] fill-on-surface" text-anchor="middle" transform="rotate(-90, 25, 210)" x="25" y="210">Discharge (m³/s)</text>
+</g>
+<!-- X-Axis Timelines / Divisions -->
+<!-- x=80: -48h | x=230: -24h | x=380: T-0 (Now) | x=540: +24h (D1) | x=700: +72h (D3) | x=900: +120h (D5) | x=1050: +168h (D7) -->
+<g class="text-surface-variant" stroke="currentColor" stroke-width="1">
+<line x1="80" x2="80" y1="380" y2="388"></line>
+<line x1="230" x2="230" y1="380" y2="388"></line>
+<line stroke="#006194" stroke-dasharray="4 4" stroke-width="1.5" x1="380" x2="380" y1="30" y2="388"></line>
+<line x1="540" x2="540" y1="380" y2="388"></line>
+<line x1="700" x2="700" y1="380" y2="388"></line>
+<line x1="900" x2="900" y1="380" y2="388"></line>
+<line x1="1050" x2="1050" y1="380" y2="388"></line>
+</g>
+<!-- Current Time (T-0) Indicator Banner -->
+<g transform="translate(380, 24)">
+<rect fill="#006194" height="20" rx="10" width="84" x="-42" y="-18"></rect>
+<text class="font-sans font-bold text-[10px] tracking-wider" fill="#ffffff" text-anchor="middle" x="0" y="-4">T-0 (NOW)</text>
+</g>
+<!-- X-Axis Labels -->
+<g class="text-on-surface-variant font-mono text-[11px]" fill="currentColor" text-anchor="middle">
+<text x="80" y="405">-48h (Jan 13)</text>
+<text x="230" y="405">-24h (Jan 14)</text>
+<text class="font-bold fill-primary" x="380" y="405">Jan 15 00:00</text>
+<text x="540" y="405">+24h (Day 1)</text>
+<text x="700" y="405">+72h (Day 3)</text>
+<text x="900" y="405">+120h (Day 5)</text>
+<text class="font-bold fill-error" x="1050" y="405">+168h (Day 7)</text>
+</g>
+<!-- Critical Threshold Line (15.0 m3/s -> y=230) -->
+<g id="threshold-layer">
+<line stroke="#ba1a1a" stroke-dasharray="6 4" stroke-width="2" x1="80" x2="1050" y1="230" y2="230"></line>
+<rect fill="#ffdad6" height="22" rx="4" width="170" x="880" y="212"></rect>
+<text class="font-sans font-bold text-[10px] tracking-wide" fill="#93000a" text-anchor="middle" x="965" y="227">
+              SPILLWAY CAPACITY: 15.0 m³/s
+            </text>
+</g>
+<!-- 90% Confidence Interval Band (P10 to P90) from T-0 (x=380) to Day 7 (x=1050) -->
+<!-- Coordinates:
+               At T-0: y_center=280 (10.0), band [280, 280]
+               At +24h (x=540): pred 12.4 (y=256), upper 17.9 (y=201), lower 8.1 (y=299)
+               At +72h (x=700): pred 14.1 (y=239), upper 22.6 (y=154), lower 8.8 (y=292)
+               At +120h (x=900): pred 16.8 (y=212), upper 27.0 (y=110), lower 9.1 (y=289)
+               At +168h (x=1050): pred 18.7 (y=193), upper 31.2 (y=68), lower 9.5 (y=285)
+          -->
+<g id="uncertainty-band">
+<path d="M 380,280
+                     C 460,240 500,201 540,201
+                     C 620,177 660,154 700,154
+                     C 800,132 850,110 900,110
+                     C 975,89 1010,68 1050,68
+                     L 1050,285
+                     C 1010,287 975,289 900,289
+                     C 850,290 800,292 700,292
+                     C 660,295 620,299 540,299
+                     C 500,290 460,280 380,280 Z" fill="url(#uncertaintyGradient)"></path>
+<!-- Confidence envelope border lines -->
+<path d="M 380,280 C 460,240 500,201 540,201 C 620,177 660,154 700,154 C 800,132 850,110 900,110 C 975,89 1010,68 1050,68" fill="none" stroke="#57dffe" stroke-dasharray="4 2" stroke-width="1.5"></path>
+<path d="M 380,280 C 460,290 500,299 540,299 C 620,295 660,292 700,292 C 800,290 850,289 900,289 C 975,287 1010,285 1050,285" fill="none" stroke="#57dffe" stroke-dasharray="4 2" stroke-width="1.5"></path>
+</g>
+<!-- Observed Streamflow Trace (-48h to T-0) -->
+<!-- Points: (-48h, 9.4 -> y=286), (-24h, 9.8 -> y=282), (T-0, 10.0 -> y=280) -->
+<g id="observed-trace">
+<path d="M 80,290
+                     C 150,295 190,284 230,282
+                     C 280,280 330,282 380,280" fill="none" stroke="#006194" stroke-linecap="round" stroke-width="3.5"></path>
+<circle cx="80" cy="290" fill="#006194" r="4.5" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="230" cy="282" fill="#006194" r="4.5" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="380" cy="280" fill="#006194" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+</g>
+<!-- LSTM Predicted Discharge Trace (T-0 to Day 7) -->
+<!-- Points: T-0=10.0 (y=280), D1=12.4 (y=256), D3=14.1 (y=239), D5=16.8 (y=212), D7=18.7 (y=193) -->
+<g id="predicted-trace">
+<!-- Shaded area beneath prediction curve -->
+<path d="M 380,280
+                     C 460,268 500,256 540,256
+                     C 620,247 660,239 700,239
+                     C 800,225 850,212 900,212
+                     C 975,202 1010,193 1050,193
+                     L 1050,380 L 380,380 Z" fill="url(#lstmFillGradient)"></path>
+<!-- Main Purple Prediction Curve -->
+<path d="M 380,280
+                     C 460,268 500,256 540,256
+                     C 620,247 660,239 700,239
+                     C 800,225 850,212 900,212
+                     C 975,202 1010,193 1050,193" fill="none" stroke="#6b38d4" stroke-linecap="round" stroke-width="4"></path>
+<!-- Forecast Point Markers -->
+<circle cx="540" cy="256" fill="#6b38d4" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="700" cy="239" fill="#6b38d4" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="900" cy="212" fill="#6b38d4" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<!-- Peak Breach Point at T+168h -->
+<circle cx="1050" cy="193" fill="#ba1a1a" r="7" stroke="#ffffff" stroke-width="3"></circle>
+</g>
+<!-- Breach Intersection Pin: Crosses 15.0 m3/s around x=800 (Day 4) -->
+<g transform="translate(800, 230)">
+<circle cx="0" cy="0" fill="#ba1a1a" r="4"></circle>
+<rect fill="#ba1a1a" height="20" rx="6" width="110" x="-55" y="-30"></rect>
+<text class="font-sans font-bold text-[10px]" fill="#ffffff" text-anchor="middle" x="0" y="-16">Breach: Day 4.2</text>
+<line stroke="#ba1a1a" stroke-width="1.5" x1="0" x2="0" y1="-10" y2="0"></line>
+</g>
+<!-- Callout Tag at Day 7 Peak Forecast -->
+<g transform="translate(1050, 150)">
+<rect fill="#0b1c30" height="34" opacity="0.92" rx="8" width="170" x="-170" y="-36"></rect>
+<text class="font-sans font-bold text-[11px]" fill="#ffffff" text-anchor="middle" x="-85" y="-22">
+              Day 7 Peak: 18.7 m³/s
+            </text>
+<text class="font-mono font-semibold text-[10px]" fill="#57dffe" text-anchor="middle" x="-85" y="-8">
+              +3.7 m³/s Spillway Breach
+            </text>
+<polygon fill="#0b1c30" opacity="0.92" points="-5,-2 -5,-14 5,-8"></polygon>
+</g>
+<!-- Unified Hover Inspector Crosshair (Dynamic Interactive Element) -->
+<g class="transition-opacity duration-150" id="hover-cursor" opacity="0">
+<line id="cursor-line-x" stroke="#707881" stroke-dasharray="2 2" stroke-width="1" x1="0" x2="0" y1="30" y2="380"></line>
+<circle cx="0" cy="0" fill="#8455ef" id="cursor-point-pred" r="6" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="0" cy="0" fill="#006194" id="cursor-point-obs" r="5" stroke="#ffffff" stroke-width="2"></circle>
+</g>
+</svg>
+<!-- Dynamic Floating Unified Hover Box -->
+<div class="absolute top-6 left-8 bg-surface-container-lowest/95 backdrop-blur-md rounded-DEFAULT p-3 shadow-lg pointer-events-none transition-all duration-75 min-w-[220px]" id="unified-tooltip">
+<div class="flex items-center justify-between border-b border-surface-variant pb-1.5 mb-1.5">
+<span class="font-label-md text-label-md text-on-surface" id="tooltip-time">Jan 22, 2026 (T+168h)</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container" id="tooltip-status">BREACH</span>
+</div>
+<div class="flex flex-col gap-1 font-mono text-[12px]">
+<div class="flex items-center justify-between">
+<span class="text-tertiary font-sans text-body-sm font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>LSTM Predicted:
+              </span>
+<span class="font-bold text-on-surface" id="tooltip-pred">18.7 m³/s</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary font-sans text-body-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>90% Range:
+              </span>
+<span class="text-on-surface-variant" id="tooltip-envelope">[9.5 – 31.2]</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-primary font-sans text-body-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>USGS Observed:
+              </span>
+<span class="text-on-surface-variant" id="tooltip-obs">--</span>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-surface-container">
+<span class="text-error font-sans text-[11px] font-semibold">Spillway Delta:</span>
+<span class="font-bold text-error" id="tooltip-delta">+3.7 m³/s</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Hydro Timeline Scrubber -->
+<div class="w-full bg-surface-container-low rounded-DEFAULT p-space-md flex flex-col gap-2">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">linear_scale</span>
+            TEMPORAL SCRUBBER &amp; RECEPTIVE FIELD WINDOW
+          </span>
+<span class="font-mono text-on-surface" id="scrubber-active-label">Position: T+168h (Day 7 Forecast Peak)</span>
+</div>
+<div class="relative w-full flex items-center py-2">
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" id="time-scrubber" max="168" min="-48" oninput="handleScrubber(this.value)" step="12" type="range" value="168"/>
+</div>
+<div class="w-full flex justify-between font-mono text-[11px] text-on-surface-variant px-1">
+<span>-48h (Basin Antecedent)</span>
+<span>-24h</span>
+<span class="text-primary font-bold">T-0 (Observation)</span>
+<span>+24h</span>
+<span>+72h</span>
+<span class="text-error font-bold">+168h (Peak Spillway Breach)</span>
+</div>
+</div>
+</div>
+<!-- Multi-Horizon Probabilistic Risk Breakdown (3 Side-by-Side Cards) -->
+<div class="w-full grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- 1-Day Horizon Card -->
+<div class="bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col justify-between transition-transform duration-200 hover:-translate-y-1">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface font-semibold">24-Hour Lead</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              LOW CONCERN
+            </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">1-Day Horizon</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Near-surface infiltration dominated. High catchment retention headroom remaining.</p>
+<div class="flex items-baseline gap-2 mt-space-md">
+<span class="font-display-hero-mobile text-display-hero-mobile text-primary">12.4</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">m³/s</span>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-low flex flex-col gap-1 mt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>90% Confidence Interval:</span>
+<span class="font-mono text-on-surface font-bold">8.1 – 17.9 m³/s</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>High Flow Prob (&gt;15 m³/s):</span>
+<span class="font-mono text-secondary font-bold">8%</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 8%;"></div>
+</div>
+<span class="block mt-1 font-label-sm text-[11px] text-on-surface-variant text-right">8% Exceedance Odds</span>
+</div>
+</div>
+<!-- 3-Days Horizon Card -->
+<div class="bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col justify-between transition-transform duration-200 hover:-translate-y-1">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface font-semibold">72-Hour Lead</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              ELEVATED STAGE
+            </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">3-Days Horizon</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Upstream tributaries synchronizing. Soil saturation index reaching 84% capacity.</p>
+<div class="flex items-baseline gap-2 mt-space-md">
+<span class="font-display-hero-mobile text-display-hero-mobile text-secondary">14.1</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">m³/s</span>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-low flex flex-col gap-1 mt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>90% Confidence Interval:</span>
+<span class="font-mono text-on-surface font-bold">8.8 – 22.6 m³/s</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>High Flow Prob (&gt;15 m³/s):</span>
+<span class="font-mono text-primary font-bold">17%</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 17%;"></div>
+</div>
+<span class="block mt-1 font-label-sm text-[11px] text-on-surface-variant text-right">17% Exceedance Odds</span>
+</div>
+</div>
+<!-- 7-Days Horizon Card (Breach) -->
+<div class="bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col justify-between transition-transform duration-200 hover:-translate-y-1">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">168-Hour Lead (PEAK)</span>
+<span class="px-2.5 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-on-error animate-ping"></span>
+              THRESHOLD EXCEEDED
+            </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">7-Days Horizon</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Channel overflow inevitable without controlled reservoir drawdowns in Reaches 2 &amp; 3.</p>
+<div class="flex items-baseline gap-2 mt-space-md">
+<span class="font-display-hero-mobile text-display-hero-mobile text-error">18.7</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">m³/s</span>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-error-container/40 flex flex-col gap-1 mt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>90% Confidence Interval:</span>
+<span class="font-mono text-error font-bold">9.5 – 31.2 m³/s</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>High Flow Prob (&gt;15 m³/s):</span>
+<span class="font-mono text-error font-bold">31%</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Extreme Surge Prob (&gt;25 m³/s):</span>
+<span class="font-mono text-error font-bold">12%</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 31%;"></div>
+</div>
+<span class="block mt-1 font-label-sm text-[11px] text-error font-semibold text-right">31% Probability of Flood Breach</span>
+</div>
+</div>
+</div>
+<!-- Real Telemetry vs ML Inference Delta Matrix -->
+<div class="w-full bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Telemetry vs ML Inference Delta Matrix</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Synchronized array from PyTorch sequence tensors and CAMELS basin observations.</p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors shadow-sm" onclick="downloadPredictionsJson()">
+<span class="material-symbols-outlined text-[18px] text-primary">download</span>
+<span>Download sample_predictions.json</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all shadow-[0_2px_8px_rgba(0,97,148,0.2)]" onclick="triggerCopilotPrompt()">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+<span>Query Copilot Regarding Peak Breach</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-4 rounded-l-DEFAULT">Forecast Horizon</th>
+<th class="py-3 px-4">Lead Time</th>
+<th class="py-3 px-4">Predicted Discharge</th>
+<th class="py-3 px-4">90% Lower Bound (P10)</th>
+<th class="py-3 px-4">90% Upper Bound (P90)</th>
+<th class="py-3 px-4">High Flow Prob (&gt;15 m³/s)</th>
+<th class="py-3 px-4">Extreme Surge (&gt;25 m³/s)</th>
+<th class="py-3 px-4 rounded-r-DEFAULT text-right">Spillway Delta</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4 font-bold text-on-surface">Day 1</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">T+24h</td>
+<td class="py-3.5 px-4 font-mono font-bold text-primary">12.4 m³/s</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">8.1 m³/s</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">17.9 m³/s</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">8%</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">1%</td>
+<td class="py-3.5 px-4 font-mono text-right text-secondary font-semibold">-2.6 m³/s (Safe)</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4 font-bold text-on-surface">Day 3</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">T+72h</td>
+<td class="py-3.5 px-4 font-mono font-bold text-secondary">14.1 m³/s</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">8.8 m³/s</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">22.6 m³/s</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm">17%</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">4%</td>
+<td class="py-3.5 px-4 font-mono text-right text-secondary font-semibold">-0.9 m³/s (Marginal)</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-error-container/20">
+<td class="py-3.5 px-4 font-bold text-error">Day 7 (Peak)</td>
+<td class="py-3.5 px-4 font-mono text-error font-bold">T+168h</td>
+<td class="py-3.5 px-4 font-mono font-bold text-error">18.7 m³/s</td>
+<td class="py-3.5 px-4 font-mono text-on-surface-variant">9.5 m³/s</td>
+<td class="py-3.5 px-4 font-mono text-error font-bold">31.2 m³/s</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-bold">31%</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">12%</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-right text-error font-bold">+3.7 m³/s (BREACH)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- JSON Payload Snippet Drawer preview -->
+<div class="bg-surface-container-low p-space-md rounded-DEFAULT font-mono text-[12px] text-on-surface-variant flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">TENSOR WEIGHTS METADATA &amp; LOSS SPECIFICATION</span>
+<span class="text-[11px] text-secondary">Loss Function: Huber Loss (delta=1.0) • Epoch 240 / Valid Loss: 0.0418</span>
+</div>
+<div class="p-2 bg-surface-container-lowest rounded overflow-x-auto text-on-surface">
+          {"model": "PyTorch-LSTM-v4.2", "basin_id": "05503800", "loss_delta": 1.0, "horizons_days": [1, 3, 7], "discharge_forecast_m3s": [12.4, 14.1, 18.7], "ci_90_lower": [8.1, 8.8, 9.5], "ci_90_upper": [17.9, 22.6, 31.2], "threshold_m3s": 15.0}
+        </div>
+</div>
+</div>
+<!-- Copilot Modal / Pop-over Alert Triggered via Script -->
+<div class="fixed bottom-6 right-6 max-w-md w-full bg-surface-container-lowest rounded-lg p-space-lg shadow-xl z-50 transition-all duration-300 transform translate-y-32 opacity-0 pointer-events-none" id="copilot-drawer">
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-sm mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-sm">BS</div>
+<span class="font-label-md text-label-md text-on-surface">BasinShift AI Hydro Copilot</span>
+</div>
+<button class="w-6 h-6 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant" onclick="closeCopilotPrompt()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mb-3">
+<strong>Query:</strong> "Evaluate flood mitigation routing for Salt River Reach 4 Peak Breach of 18.7 m³/s at Day 7."
+      </p>
+<div class="bg-surface-container-low p-space-sm rounded-DEFAULT font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+<strong>Llama-3.3 Hydro-Analysis:</strong> At 18.7 m³/s, Reach 4 exceeds the 15.0 m³/s spillway safe stage by +3.7 m³/s. Recommend initiating a controlled 2.5 m³/s pre-release at Headwater Reservoir upstream starting at T+48h to flatten the Day 7 surge.
+      </div>
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm" onclick="closeCopilotPrompt()">
+          Acknowledge &amp; Dispatch Directive
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Hydrograph Interactive Logic
+
+  // Async live Supabase data binding
+  async function syncWithSupabase() {
+    try {
+      if (!window.BasinShiftDB) return;
+      const forecast = await window.BasinShiftDB.getLatestForecast("camels_05503800");
+      if (forecast && forecast.predicted_discharge) {
+        console.log("⚡ Bound live forecast from Supabase:", forecast);
+        // Update horizon cards if present
+        const preds = forecast.predicted_discharge;
+        if (preds.length >= 3) {
+          predictionsData.horizons[0].pred = preds[0];
+          predictionsData.horizons[1].pred = preds[1];
+          predictionsData.horizons[2].pred = preds[2];
+        }
+        if (forecast.lower_bound && forecast.upper_bound) {
+          predictionsData.horizons[0].lower = forecast.lower_bound[0];
+          predictionsData.horizons[0].upper = forecast.upper_bound[0];
+          predictionsData.horizons[1].lower = forecast.lower_bound[1];
+          predictionsData.horizons[1].upper = forecast.upper_bound[1];
+          predictionsData.horizons[2].lower = forecast.lower_bound[2];
+          predictionsData.horizons[2].upper = forecast.upper_bound[2];
+        }
+      }
+    } catch (e) {
+      console.warn("Could not sync live hydrograph with Supabase:", e);
+    }
+  }
+  setTimeout(syncWithSupabase, 400);
+
+  const predictionsData = {
+    basin: "05503800",
+    name: "Salt River Reach 4",
+    threshold: 15.0,
+    horizons: [
+      { day: 1, hours: 24, pred: 12.4, lower: 8.1, upper: 17.9, probHigh: 8, probExtreme: 1 },
+      { day: 3, hours: 72, pred: 14.1, lower: 8.8, upper: 22.6, probHigh: 17, probExtreme: 4 },
+      { day: 7, hours: 168, pred: 18.7, lower: 9.5, upper: 31.2, probHigh: 31, probExtreme: 12 }
+    ]
+  };
+
+  function setHorizon(days) {
+    const btn1 = document.getElementById('btn-horizon-1');
+    const btn3 = document.getElementById('btn-horizon-3');
+    const btn7 = document.getElementById('btn-horizon-7');
+    const scrubber = document.getElementById('time-scrubber');
+
+    [btn1, btn3, btn7].forEach(b => {
+      b.className = "px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-variant transition-all shadow-sm";
+    });
+
+    if (days === 1) {
+      btn1.className = "px-4 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-[0_2px_8px_rgba(0,97,148,0.25)]";
+      scrubber.value = 24;
+      handleScrubber(24);
+    } else if (days === 3) {
+      btn3.className = "px-4 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-[0_2px_8px_rgba(0,97,148,0.25)]";
+      scrubber.value = 72;
+      handleScrubber(72);
+    } else {
+      btn7.className = "px-4 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-[0_2px_8px_rgba(0,97,148,0.25)]";
+      scrubber.value = 168;
+      handleScrubber(168);
+    }
+  }
+
+  function toggleUncertaintyBand() {
+    const band = document.getElementById('uncertainty-band');
+    const toggle = document.getElementById('toggle-uncertainty');
+    band.style.display = toggle.checked ? 'block' : 'none';
+  }
+
+  function toggleObservedTrace() {
+    const trace = document.getElementById('observed-trace');
+    const toggle = document.getElementById('toggle-observed');
+    trace.style.display = toggle.checked ? 'block' : 'none';
+  }
+
+  function handleScrubber(val) {
+    const label = document.getElementById('scrubber-active-label');
+    const tooltipTime = document.getElementById('tooltip-time');
+    const tooltipStatus = document.getElementById('tooltip-status');
+    const tooltipPred = document.getElementById('tooltip-pred');
+    const tooltipObs = document.getElementById('tooltip-obs');
+    const tooltipEnvelope = document.getElementById('tooltip-envelope');
+    const tooltipDelta = document.getElementById('tooltip-delta');
+
+    const v = parseInt(val);
+    label.innerText = `Position: ${v >= 0 ? '+' : ''}${v}h (${v <= 0 ? 'Observed Gauge' : 'Forecast Day ' + Math.ceil(v/24)})`;
+
+    if (v <= 0) {
+      tooltipTime.innerText = `Antecedent ${v}h`;
+      tooltipStatus.innerText = "OBSERVED";
+      tooltipStatus.className = "px-1.5 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed text-on-secondary-fixed";
+      tooltipPred.innerText = "--";
+      tooltipObs.innerText = (10.0 + (v * 0.015)).toFixed(1) + " m³/s";
+      tooltipEnvelope.innerText = "Nominal";
+      tooltipDelta.innerText = "Within safe margin";
+      tooltipDelta.className = "font-bold text-secondary";
+    } else if (v <= 36) {
+      tooltipTime.innerText = `Jan 16 (T+24h)`;
+      tooltipStatus.innerText = "NOMINAL";
+      tooltipStatus.className = "px-1.5 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed text-on-secondary-fixed";
+      tooltipPred.innerText = "12.4 m³/s";
+      tooltipObs.innerText = "--";
+      tooltipEnvelope.innerText = "[8.1 – 17.9]";
+      tooltipDelta.innerText = "-2.6 m³/s (Safe)";
+      tooltipDelta.className = "font-bold text-secondary";
+    } else if (v <= 96) {
+      tooltipTime.innerText = `Jan 18 (T+72h)`;
+      tooltipStatus.innerText = "ELEVATED";
+      tooltipStatus.className = "px-1.5 py-0.5 rounded text-[10px] font-bold bg-surface-variant text-on-surface-variant";
+      tooltipPred.innerText = "14.1 m³/s";
+      tooltipObs.innerText = "--";
+      tooltipEnvelope.innerText = "[8.8 – 22.6]";
+      tooltipDelta.innerText = "-0.9 m³/s (Marginal)";
+      tooltipDelta.className = "font-bold text-primary";
+    } else {
+      tooltipTime.innerText = `Jan 22 (T+168h)`;
+      tooltipStatus.innerText = "BREACH";
+      tooltipStatus.className = "px-1.5 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container";
+      tooltipPred.innerText = "18.7 m³/s";
+      tooltipObs.innerText = "--";
+      tooltipEnvelope.innerText = "[9.5 – 31.2]";
+      tooltipDelta.innerText = "+3.7 m³/s (Breach)";
+      tooltipDelta.className = "font-bold text-error";
+    }
+  }
+
+  function downloadPredictionsJson() {
+    const payload = {
+      timestamp: "2026-01-15T00:00:00Z",
+      basin_id: "05503800",
+      catchment: "Salt River Reach 4",
+      model: "PyTorch-LSTM-v4.2-Huber",
+      weights_file: "flood_lstm_weights.pth",
+      critical_threshold_m3s: 15.0,
+      forecast_horizons_days: [1, 3, 7],
+      predictions: [
+        { horizon_days: 1, lead_hours: 24, predicted_discharge_m3s: 12.4, ci_90: [8.1, 17.9], prob_high_flow: 0.08, prob_extreme: 0.01 },
+        { horizon_days: 3, lead_hours: 72, predicted_discharge_m3s: 14.1, ci_90: [8.8, 22.6], prob_high_flow: 0.17, prob_extreme: 0.04 },
+        { horizon_days: 7, lead_hours: 168, predicted_discharge_m3s: 18.7, ci_90: [9.5, 31.2], prob_high_flow: 0.31, prob_extreme: 0.12 }
+      ]
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "sample_predictions.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function triggerCopilotPrompt() {
+    const drawer = document.getElementById('copilot-drawer');
+    drawer.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-32');
+    drawer.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+  }
+
+  function closeCopilotPrompt() {
+    const drawer = document.getElementById('copilot-drawer');
+    drawer.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+    drawer.classList.add('opacity-0', 'pointer-events-none', 'translate-y-32');
+  }
+</script></main><footer class="w-full bg-surface-container-low py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-sm"><div class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[14px]">water_lux</span></div><span class="font-label-md text-label-md text-on-surface">BasinShift Hydro Intelligence</span><span>•</span><span>PyTorch LSTM</span><span>•</span><span>Huber Loss (δ=1.0)</span><span>•</span><span>Groq Llama-3.3-70B</span><span>•</span><span>CAMELS Hydrological Dataset</span></div><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-secondary">All Hydrological Models Nominal</span><span>© 2025 BasinShift Platform. Open Science &amp; Civic Hydrology.</span></div></div></footer></body></html>
