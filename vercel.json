@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/", "destination": "/stitch_floodcast_disaster_intelligence_platform/index.html" },
+    { "source": "/shared/(.*)", "destination": "/stitch_floodcast_disaster_intelligence_platform/shared/$1" },
+    { "source": "/basinshift_command_center/(.*)", "destination": "/stitch_floodcast_disaster_intelligence_platform/basinshift_command_center/$1" },
+    { "source": "/basinshift_flood_prediction/(.*)", "destination": "/stitch_floodcast_disaster_intelligence_platform/basinshift_flood_prediction/$1" },
+    { "source": "/basinshift_model_lab/(.*)", "destination": "/stitch_floodcast_disaster_intelligence_platform/basinshift_model_lab/$1" },
+    { "source": "/basinshift_ai_assistant/(.*)", "destination": "/stitch_floodcast_disaster_intelligence_platform/basinshift_ai_assistant/$1" },
+    { "source": "/(.*)", "destination": "/stitch_floodcast_disaster_intelligence_platform/$1" }
+  ]
+}
+
